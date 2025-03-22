@@ -1,0 +1,182 @@
+/*Animation for the logo*/
+@keyframes logoAnimation {
+    from {
+        /*Starts small at 25px*/
+        width: 25px;
+        /*Fully transparent as opacity is 0*/
+        opacity: 0;
+    }
+
+    to {
+        /*Grows to 475px*/
+        width: 475px;
+        /*Fully visible as opacity is 1*/
+        opacity: 1;
+    }
+}
+
+/*Apply animation only if reduce motion is ON*/
+@media (prefers-reduced-motion: no-preference) {
+    #logo {
+        animation: logoAnimation 5s ease-out;
+    }
+}
+
+/*Poppins font for body with any serif as a backup*/
+/*Background image set to the concreate seamless image with background color of #f1f1f1 as fallback*/
+body {
+    font-family: 'Poppins', serif;
+    background: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/*Header section styling to stack elements vertically and center elements*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Navigation links styling to stack the links vertically*/
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/*Same link color as blue for both unvisited and visited links*/
+a:link,
+a:visited {
+    color: blue;
+}
+
+/*Default card container styling: base width is 450px, the top left and right corners are rounded*/
+.card {
+    flex-basis: 450px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/*Styling for header in each card*/
+.card>header {
+    background: #288088;
+    border: #45ADAD 2px solid;
+    padding: 20px 0px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/*Pricing section layout - allows items to wrap into new rows when size changes*/
+.pricing {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+/*Gallery section layout - allows images to wrap when size changes*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*Styling for each image in gallery, with border and margin and sets fixed width of 300px for images*/
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/*Styles for screens larger than 900px*/
+@media screen and (min-width: 900px) {
+
+    /*Distributes items evenly in a row for header and nav link elements*/
+    header,
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        /*Sets a fixed width of 275px for each card*/
+        flex-basis: 275px;
+        margin: 10px;
+        padding-top: 0;
+    }
+
+    /*Keeps header visible at the top while scrolling*/
+    body>header {
+        position: sticky;
+        top: 0;
+    }
+}
+
+/*Remove animation when users prefers reduced motion*/
+@media all and (prefers-reduced-motion: reduce) {
+    #logo {
+        /*Disables animation*/
+        animation: none;
+    }
+}
+
+/*Print-specific styles*/
+@media print {
+
+    /*Removes background image and sets a sans-serif font for printing*/
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none;
+    }
+
+    /*Makes nav take full width*/
+    nav {
+        width: 100%;
+    }
+
+    /*Spreads links evenly and aligns links in a row*/
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /*Aligns pricing items to the bottom*/
+    .pricing {
+        align-items: flex-end;
+        flex-flow: row nowrap;
+    }
+
+    /*Adjusts card width to 325px and sets a border*/
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /*Hides gallery when printing*/
+    #gallery {
+        display: none;
+    }
+
+    /*Hides images when printing*/
+    .gallery {
+        display: none;
+    }
+
+    /*Adds a thumbs-up emoji to the second list item in pricing and sets 6px spacing on the left of the emoji*/
+    .pricing li:nth-child(2)::after {
+        /*Unicode for thumbs-up emoji*/
+        content: "\1F44D";
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 6px;
+    }
+
+}

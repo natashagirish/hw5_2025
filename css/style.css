@@ -174,8 +174,6 @@ a:visited {
     .pricing li:nth-child(2)::after {
         /*Unicode for thumbs-up emoji*/
         content: "\1F44D";
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
         margin-left: 6px;
     }
 
